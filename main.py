@@ -11,3 +11,7 @@ from sklearn.metrics import accuracy_score, classification_report
 
 import warnings
 warnings.filterwarnings('ignore')
+
+# Importação do Dataset
+df = pd.read_excel("csgo_round_snapshots.xlsx")
+df.head()
