@@ -28,3 +28,12 @@ df.drop(['match_id', 'round_num'], axis=1, inplace=True)
 
 df = pd.get_dummies(df, columns=['map'], drop_first=True)
 df['round_winner'] = df['round_winner'].map({'CT': 0, 'T': 1})
+
+# Seleção de Atributos
+X = df.drop('round_winner', axis=1)
+y = df['round_winner']
+
+selector = SelectKBest(score_func=f_classif, k=15)
+X_selected = selector.fit_transform(X, y)
+selected_features = X.columns[selector.get_support()]
+X = pd.DataFrame(X_selected, columns=selected_features)
