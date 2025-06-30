@@ -37,3 +37,6 @@ selector = SelectKBest(score_func=f_classif, k=15)
 X_selected = selector.fit_transform(X, y)
 selected_features = X.columns[selector.get_support()]
 X = pd.DataFrame(X_selected, columns=selected_features)
+
+# Divisão de treinos
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
