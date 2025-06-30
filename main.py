@@ -21,3 +21,10 @@ df.info()
 df.describe()
 df['round_winner'].value_counts().plot(kind='bar')
 plt.title('Distribuição do Vencedor do Round')
+
+# Pré-processamento de dados
+df.dropna(inplace=True)
+df.drop(['match_id', 'round_num'], axis=1, inplace=True)
+
+df = pd.get_dummies(df, columns=['map'], drop_first=True)
+df['round_winner'] = df['round_winner'].map({'CT': 0, 'T': 1})
