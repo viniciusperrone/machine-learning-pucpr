@@ -40,3 +40,13 @@ X = pd.DataFrame(X_selected, columns=selected_features)
 
 # Divisão de treinos
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+
+# Tipo de problema
+"""
+Trata-se de um problema de **classificação binária**, pois o objetivo 
+é prever se o vencedor de um round será a equipe **CT (0)** ou **T (1)**.
+"""
+
+# Treinamento do modelo
+model = RandomForestClassifier(random_state=42)
+model.fit(X_train, y_train)
